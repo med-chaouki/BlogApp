@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Blog</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <style>
+        /* Add your CSS styles for the modal here */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 450px;
+            width: 100%;
+            height: 400px;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            width: 80%;
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .close {
+            float: right;
+            cursor: pointer;
+            color: red;
+        }
+        input{
+            width: 100%;
+            height: 25px;
+        }
+        textarea{
+            width: 100%;
+            height: 200px;
+        }
+    </style>
+ 
+</head>
+<body>
+    <header>
+        <h1>My Blog</h1>
+        <nav>
+            <ul >
+                <li><a href="/">Home</a></li>
+                <li><a href="/login">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main> 
+        <form class="modal modal-content" id="postModal"  id="postForm" action="/posts" method="POST">
+            <span class="close" id="closeModalBtn">&times;</span> <br> <br>
+            <div>
+                <label for="title">Title:</label> <br>
+                <input type="text" id="title" name="title" required>
+            </div>
+            <div>
+                <label for="content">Content:</label> <br>
+                <textarea id="content" name="content" required></textarea>
+            </div>
+            <button class="btn btn-success" type="submit">Add Post</button>
+        </form>
+                
+        <form class="modal modal-content" id="updateModal">
+            <span class="close" id="closeUpdateModalBtn">&times;</span> <br> <br>
+            <div>
+                <label for="updateTitle">Title:</label> <br>
+                <input type="text" id="updateTitle" name="title" required>
+            </div>
+            <div>
+                <label for="updateContent">Content:</label> <br>
+                <textarea id="updateContent" name="content" required></textarea>
+            </div>
+            <button class="btn btn-success" id="updatePostBtn" type="button">Update Post</button>
+        </form>
+
+        <button id="openUpdateModalBtn" class="btn btn-primary" style="display: none;">Update</button>
+
+        <button id="openModalBtn" class="btn btn-success" type="submit">Add</button>
+
+        <% posts.forEach(post => { %>
+            <article class="blog-card">
+                <h2><%= post.title %></h2>
+                <p><%= post.content %></p>
+                <button class="btn btn-danger delete-post-btn" data-postid="<%= post.id %>">Delete</button>
+                <button class="btn btn-primary open-update-modal-btn"  data-postid="<%= post.id %>" >Update</button>
+
+            </article>
+        <% }); %>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2023 My Blog</p>
+    </footer>
+
+    <script>
+        // Get references to the modal and buttons
+        const openModalBtn = document.getElementById('openModalBtn');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const modal = document.getElementById('postModal');
+        const postForm = document.getElementById('postForm');
+
+        // Function to open the modal
+        function openModal() {
+            modal.style.display = 'block';
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        // Event listeners to show/hide the modal
+        openModalBtn.addEventListener('click', openModal);
+        closeModalBtn.addEventListener('click', closeModal);
+
+        // Event listener for form submission
+        postForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get the values from the form
+            const title = document.getElementById('title').value;
+            const content = document.getElementById('content').value;
+
+            closeModal();
+        });
+
+      </script>
+
+    <script>
+        // Get references to the modal and buttons
+        const openUpdateModalBtn = document.getElementById('openUpdateModalBtn');
+        const closeUpdateModalBtn = document.getElementById('closeUpdateModalBtn');
+        const updateModal = document.getElementById('updateModal');
+        const updateTitleInput = document.getElementById('updateTitle');
+        const updateContentTextarea = document.getElementById('updateContent');
+        const updatePostBtn = document.getElementById('updatePostBtn');
+
+        // Function to open the update modal
+        function openUpdateModal() {
+            updateModal.style.display = 'block';
+        }
+
+        // Function to close the update modal
+        function closeUpdateModal() {
+            updateModal.style.display = 'none';
+        }
+
+        // Event listener to open the update modal and populate it
+        const openUpdateModalBtns = document.querySelectorAll('.open-update-modal-btn');
+
+        openUpdateModalBtns.forEach(button => {
+            button.addEventListener('click', (event) => {
+                // Get the current post data (title and content)
+                const postCard = event.target.closest('.blog-card');
+                const currentTitle = postCard.querySelector('h2').textContent;
+                const currentContent = postCard.querySelector('p').textContent;
+                 
+                const postId = button.getAttribute('data-postid');
+                // Populate the update form with the current post data
+                updateTitleInput.value = currentTitle;
+                updateContentTextarea.value = currentContent;
+
+                updatePostBtn.setAttribute('data-postid', postId);
+
+                // Show the update modal
+                openUpdateModal();
+            });
+        });
+
+        // Event listener to close the update modal
+        closeUpdateModalBtn.addEventListener('click', () => {
+            closeUpdateModal();
+        });
+        
+        const updatePost = document.getElementById('updatePost');
+        // Event listener for updating the post
+        updatePostBtn.addEventListener('click', async () => {
+            // Get the updated title and content from the update modal's input fields
+            const updatedTitle = updateTitleInput.value;
+            const updatedContent = updateContentTextarea.value;
+
+            // Send a PUT request to update the post
+             const postId = updatePostBtn.getAttribute('data-postid');
+
+            // console.log(postId);
+            const response = await fetch(`/posts/${postId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ title: updatedTitle, content: updatedContent }),
+            });
+
+            if (response.status === 200) {
+                // The update was successful, handle the response as needed
+                // Close the update modal
+                window.location.reload();
+                closeUpdateModal();
+
+                
+            } else {
+                // Handle errors, e.g., post not found
+                console.error(response.statusText);
+            }
+        });
+
+        // Delete post functionality (you can add this part)
+        const deleteButtons = document.querySelectorAll('.delete-post-btn');
+
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', async () => {
+                const postId = button.getAttribute('data-postid');
+                // Make a DELETE request to the `/posts/:id` endpoint with the post ID in the URL
+                const response = await fetch(`/posts/${postId}`, {
+                    method: 'DELETE',
+                });
+
+                // If the request is successful, remove the post from the DOM
+                if (response.status === 200) {
+                    const postCard = button.closest('.blog-card');
+                    postCard.remove();
+                } else {
+                    // Handle the error
+                    console.error(response.statusText);
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
