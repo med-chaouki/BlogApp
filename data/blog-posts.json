@@ -3,120 +3,147 @@
     "id": 1,
     "title": "Introduction to Programming",
     "content": "Programming is the process of writing instructions for a computer to perform tasks. Learn the basics of programming, including syntax, data types, and control structures.",
-    "date": "2023-10-08"
+    "date": "2023-10-08",
+    "image": "1696841743308_add.jpg"
   },
   {
     "id": 2,
     "title": "Responsive Web Design Best Practices",
     "content": "In the age of mobile devices and varying screen sizes, responsive web design is essential. Learn the best practices for creating responsive websites that adapt to different screens and devices.",
-    "date": "2023-09-25"
+    "date": "2023-09-25",
+    "image": "1696841743308_add.jpg"
   },
   {
     "id": 3,
     "title": "Building a RESTful API with Node.js and Express",
     "content": "RESTful APIs are the backbone of modern web applications. Discover how to create a RESTful API using Node.js and Express, and handle endpoints for CRUD operations.",
-    "date": "2023-09-20"
+    "date": "2023-09-20",
+    "image": "1696841743308_add.jpg"
   },
   {
     "id": 4,
     "title": "The Art of User Experience Design",
     "content": "User experience (UX) design plays a pivotal role in creating successful digital products. Learn about UX principles, usability testing, and creating delightful user interfaces.",
-    "date": "2023-09-15"
+    "date": "2023-09-15",
+    "image": "1696841743308_add.jpg"
   },
   {
     "id": 5,
     "title": "Introduction to Python Programming",
     "content": "Python is a versatile and beginner-friendly programming language. Start your programming journey with Python, including basic syntax and programming concepts.",
-    "date": "2023-09-10"
+    "date": "2023-09-10",
+    "image": "1696841743308_add.jpg"
   },
   {
     "id": 6,
     "title": "Securing Your Node.js Applications",
     "content": "Node.js is a powerful platform for building server-side applications, but it's essential to ensure they are secure. Learn about common security vulnerabilities and best practices for securing Node.js apps.",
-    "date": "2023-09-05"
+    "date": "2023-09-05",
+    "image": "1696841743308_add.jpg"
   },
   {
     "id": 7,
     "title": "Mastering Database Design: SQL vs. NoSQL",
     "content": "Choosing the right database system is crucial for your application's performance and scalability. Compare SQL and NoSQL databases and understand when to use each.",
-    "date": "2023-08-30"
+    "date": "2023-08-30",
+    "image": "1696841743308_add.jpg"
   },
   {
     "id": 8,
     "title": "JavaScript Promises and Async/Await Explained",
     "content": "Asynchronous programming is fundamental in JavaScript. Dive deep into Promises and Async/Await to handle asynchronous operations elegantly and avoid callback hell.",
-    "date": "2023-08-25"
+    "date": "2023-08-25",
+    "image": "1696841743308_add.jpg"
   },
   {
     "id": 9,
     "title": "Getting Started with Python Programming",
     "content": "Python is a versatile and beginner-friendly programming language. Start your journey into the world of programming with Python and its syntax, data types, and basic concepts.",
-    "date": "2023-08-20"
+    "date": "2023-08-20",
+    "image": "1696841743308_add.jpg"
   },
   {
     "id": 10,
     "title": "Introduction to Machine Learning",
     "content": "Machine learning is a subset of artificial intelligence that enables computers to learn from data and make predictions. Explore the fundamentals of machine learning algorithms and applications.",
-    "date": "2023-08-15"
+    "date": "2023-08-15",
+    "image": "1696841743308_add.jpg"
   },
   {
     "id": 11,
     "title": "Getting Started with React.js",
     "content": "React.js is a popular JavaScript library for building user interfaces. Learn the basics of React, including components, state management, and building interactive web applications.",
-    "date": "2023-08-10"
+    "date": "2023-08-10",
+    "image": "1696841743308_add.jpg"
   },
   {
     "id": 12,
     "title": "Introduction to Cybersecurity",
     "content": "Cybersecurity is essential in today's digital world. Get an overview of cybersecurity concepts, threats, and best practices to protect your online presence and data.",
-    "date": "2023-08-05"
+    "date": "2023-08-05",
+    "image": "1696841743308_add.jpg"
   },
   {
     "id": 13,
     "title": "Data Science for Beginners",
     "content": "Data science is a multidisciplinary field that extracts insights from data. Start your journey in data science with an introduction to data analysis, visualization, and statistics.",
-    "date": "2023-07-30"
+    "date": "2023-07-30",
+    "image": "1696841743308_add.jpg"
   },
   {
     "id": 14,
     "title": "Introduction to Cloud Computing",
     "content": "Cloud computing is changing the way businesses operate. Learn about cloud services, deployment models, and the advantages of using cloud computing for your applications.",
-    "date": "2023-07-25"
+    "date": "2023-07-25",
+    "image": "1696841743308_add.jpg"
   },
   {
     "id": 15,
     "title": "Getting Started with Swift Programming",
     "content": "Swift is a powerful and intuitive programming language for iOS app development. Start building your own iOS apps with Swift and Xcode.",
-    "date": "2023-07-20"
+    "date": "2023-07-20",
+    "image": "1696841743308_add.jpg"
   },
   {
     "id": 16,
     "title": "Artificial Intelligence: A Beginner's Guide",
     "content": "Artificial intelligence is revolutionizing various industries. Learn the basics of AI, including machine learning, deep learning, and AI applications in the real world.",
-    "date": "2023-07-15"
+    "date": "2023-07-15",
+    "image": "1696841743308_add.jpg"
   },
   {
     "id": 17,
     "title": "Introduction to Blockchain Technology",
     "content": "Blockchain is the technology behind cryptocurrencies like Bitcoin. Explore the fundamentals of blockchain, its decentralized nature, and potential use cases beyond finance.",
-    "date": "2023-07-10"
+    "date": "2023-07-10",
+    "image": "1696841743308_add.jpg"
   },
   {
     "id": 18,
     "title": "Web Development with Django: A Comprehensive Guide",
     "content": "Django is a high-level Python web framework for building robust web applications. Learn how to create web apps with Django, including routing, models, and templates.",
-    "date": "2023-07-05"
+    "date": "2023-07-05",
+    "image": "1696841743308_add.jpg"
   },
   {
     "id": 19,
     "title": "Introduction to DevOps Practices",
     "content": "DevOps is a set of practices that streamline software development and deployment. Discover the principles of DevOps, including continuous integration and continuous delivery (CI/CD).",
-    "date": "2023-06-30"
+    "date": "2023-06-30",
+    "image": "1696841743308_add.jpg"
   },
   {
     "id": 20,
     "title": "Getting Started with Kotlin Programming",
     "content": "Kotlin is a modern programming language for Android app development. Begin your journey into Android app development with Kotlin and Android Studio.",
-    "date": "2023-06-25"
+    "date": "2023-06-25",
+    "image": "1696841743308_add.jpg"
+  },
+  {
+    "id": 21,
+    "title": "aa",
+    "content": "ddddddd xsdss",
+    "date": "2023-10-09",
+    "image": "1696841743308_add.jpg"
   }
 ]

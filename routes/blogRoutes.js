@@ -4,6 +4,21 @@ const fs = require('fs');
 const path = require('path');
 const session = require('express-session');
 const passport = require('passport');
+const multer = require('multer');
+router.use(express.static('public'));
+
+// Configure multer to store uploaded files in a specific directory
+const storage = multer.diskStorage({
+  destination: (req, file, callback) => {
+    callback(null, '../BlogApp/public/img/'); // Uploads will be stored in the 'uploads' directory
+  },
+  filename: (req, file, callback) => {
+    console.log( Date.now() + '_' + file.originalname);
+    callback(null, Date.now() + '_' + file.originalname); // Add a unique timestamp to the filename
+  },
+});
+
+const upload = multer({ storage: storage });
 
 router.use(session({
   secret: 'your-secret-key',
@@ -43,13 +58,11 @@ router.get('/posts', (req, res) => {
 });
 
 
-router.post('/posts', async (req, res) => {
+router.post('/posts', upload.single('image'), async (req, res) => {
   const { title, content } = req.body;
-
-  console.log('Request Body:', req.body);
-    
-  console.log('Extracted Title:', title);
-  console.log('Extracted Content:', content);
+    const image = req.file.filename;
+    // Process the uploaded image as needed
+ 
  
   // Generate the current date in "yyyy-MM-dd" format
   const currentDate = new Date().toISOString().slice(0, 10);
@@ -69,6 +82,7 @@ router.post('/posts', async (req, res) => {
       title,
       content,
       date: currentDate,
+      image,
       // You can also add other properties like author, etc.
   };
   
@@ -80,6 +94,7 @@ router.post('/posts', async (req, res) => {
 
   // Redirect to the posts page after successfully adding the post
   res.redirect('/posts');
+
 });
 
 
